@@ -1,4 +1,4 @@
-package org.dawidfilip.common;
+package org.dawidfilip.phone.common;
 
 import java.util.List;
 

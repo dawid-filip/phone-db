@@ -1,6 +1,6 @@
 package org.dawidfilip.phone.main;
 
-import static org.dawidfilip.common.PrintBulider.*;
+import static org.dawidfilip.phone.common.PrintBulider.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
