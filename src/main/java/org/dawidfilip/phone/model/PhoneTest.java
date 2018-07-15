@@ -1,54 +1,68 @@
 package org.dawidfilip.phone.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class PhoneTes {
+public class PhoneTest {
 	
 	@Id
+	@GeneratedValue
 	private long id;
 	
 	private String brand;
 	private String model;
 	private double price;
 	
-	public PhoneTes() {}
+	public PhoneTest(){
+	}
 	
-	public PhoneTes(String brand, String model, double price) {
+	public PhoneTest(long id, String brand, String model, double price) {
 		super();
+		this.id = id;
+		this.brand = brand;
+		this.model = model;
+		this.price = price;
+	}
+	public PhoneTest(String brand, String model, double price) {
 		this.brand = brand;
 		this.model = model;
 		this.price = price;
 	}
 	
+	
+	public long getId() {
+		return id;
+	}
 	public String getBrand() {
 		return brand;
 	}
 	public String getModel() {
 		return model;
 	}
-
 	public double getPrice() {
 		return price;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
-
 	public void setModel(String model) {
 		this.model = model;
 	}
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
-
+	
+	
 	@Override
 	public String toString() {
-		return "PhoneTes [brand=" + brand + ", model=" + model + ", price=" + price + "]";
+		return "PhoneTest [id=" + id + ", brand=" + brand + ", model=" + model + ", price=" + price + "]";
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -61,7 +75,6 @@ public class PhoneTes {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -70,7 +83,7 @@ public class PhoneTes {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PhoneTes other = (PhoneTes) obj;
+		PhoneTest other = (PhoneTest) obj;
 		if (brand == null) {
 			if (other.brand != null)
 				return false;
