@@ -1,10 +1,11 @@
 package org.dawidfilip.phone.main;
 
+import static org.dawidfilip.common.PrintBulider.*;
+
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+		print("Starting application: '" + Main.class.getSimpleName() + "' class executing!");
+	}	
 
 }
