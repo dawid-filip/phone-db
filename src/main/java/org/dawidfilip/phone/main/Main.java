@@ -9,7 +9,6 @@ import javax.persistence.Persistence;
 import org.dawidfilip.phone.common.PhoneTestBuilder;
 
 public class Main {
-
 	public static void main(String[] args) {
 		print("Starting application: '" + Main.class.getSimpleName() + "' class executing!");
 		
@@ -20,8 +19,5 @@ public class Main {
 		
 		entityManager.close();
 		entityManagerFactory.close();
-		
-		
 	}	
-
 }
