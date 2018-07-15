@@ -1,5 +1,6 @@
 package org.dawidfilip.phone.common;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +17,9 @@ public class PhoneTestBuilder {
 //		PhoneTest phone1 = new PhoneTest(1L, "Sony", "Xperia Z1 Compact", 1299.99);
 //		PhoneTest phone2 = new PhoneTest(2L, "LG", "G6", 1622.89);
 		
-		PhoneTest phone1 = new PhoneTest("Sony", "Xperia Z1 Compact", 1299.99);
-		PhoneTest phone2 = new PhoneTest("LG", "G6", 1622.89);
-		PhoneTest phone3 = new PhoneTest("Xiaomi", "Redmi X5", 699.00);
+		PhoneTest phone1 = new PhoneTest("Sony", "Xperia Z1 Compact", 1299.99, BigDecimal.ZERO);
+		PhoneTest phone2 = new PhoneTest("LG", "G6", 1622.89, new BigDecimal("111.99"));
+		PhoneTest phone3 = new PhoneTest("Xiaomi", "Redmi X5", 699.00, BigDecimal.TEN);
 		
 		List<PhoneTest> phones = new ArrayList<PhoneTest>();
 		phones.add(phone1);
