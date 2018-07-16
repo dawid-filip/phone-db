@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.dawidfilip.bean.PhoneEntityManager;
+import org.dawidfilip.dao.PhoneTestDao;
 import org.dawidfilip.phone.app.configuration.ApplicationConfiguration;
 import org.dawidfilip.phone.common.PhoneTestBuilder;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -22,6 +23,9 @@ public class Main {
 		
 		EntityManager phoneEntityManager = context.getBean("entityManager", EntityManager.class);
 		
+		PhoneTestDao phoneTestDao = context.getBean("phoneTestDao", PhoneTestDao.class);
+		phoneTestDao.persist(PhoneTestBuilder.creatDummyPhoneTest());
+		
 		
 		phoneEntityManager.getTransaction().begin();
 		phoneEntityManager.persist(PhoneTestBuilder.creatDummyPhoneTest());
@@ -31,12 +35,6 @@ public class Main {
 		phoneEntityManager.getEntityManagerFactory().close();
 		phoneEntityManager.close();
 		
-		
-//		PhoneEntityManager phoneEntityManager = context.getBean("phoneEntityManager", PhoneEntityManager.class);
-//		phoneEntityManager.create();
-//		
-//		PhoneTestBuilder.commitDummyPhoneTests(phoneEntityManager);
-//		phoneEntityManager.close();
 	}	
 	
 }
