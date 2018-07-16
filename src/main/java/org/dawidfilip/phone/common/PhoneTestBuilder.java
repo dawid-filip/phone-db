@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.dawidfilip.bean.PhoneEntityManager;
 import org.dawidfilip.phone.model.PhoneTest;
 
 public class PhoneTestBuilder {
@@ -13,7 +14,11 @@ public class PhoneTestBuilder {
 	private PhoneTestBuilder() {
 	}
 	
-	public static List<PhoneTest> commitDummyPhoneTests(EntityManager entityManager) {
+	public static PhoneTest creatDummyPhoneTest() {
+		return new PhoneTest("Sony", "Xperia Z3 Compact", 2299.99, BigDecimal.ZERO);
+	}
+	
+	public static List<PhoneTest> commitDummyPhoneTests(PhoneEntityManager phoneEntityManager) {
 //		PhoneTest phone1 = new PhoneTest(1L, "Sony", "Xperia Z1 Compact", 1299.99);
 //		PhoneTest phone2 = new PhoneTest(2L, "LG", "G6", 1622.89);
 		
@@ -26,16 +31,16 @@ public class PhoneTestBuilder {
 		phones.add(phone2);
 		phones.add(phone3);
 		
-		persist(entityManager, phones);
+		persist(phoneEntityManager, phones);
 		
 		return phones;
 	}
-	private static void persist(EntityManager entityManager, List<PhoneTest> phones) {
-		entityManager.getTransaction().begin();
+	private static void persist(PhoneEntityManager phoneEntityManager, List<PhoneTest> phones) {
+		phoneEntityManager.begin();
 		for (PhoneTest p : phones) {
-			entityManager.persist(p);
+			phoneEntityManager.persist(p);
 		}
-		entityManager.getTransaction().commit();
+		phoneEntityManager.commit();
 	}
 
 }
