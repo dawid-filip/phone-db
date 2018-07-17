@@ -6,8 +6,6 @@ import javax.persistence.Persistence;
 
 import org.springframework.stereotype.Service;
 
-import net.bytebuddy.implementation.bind.annotation.Default;
-
 @Service
 public class PhoneEntityManagerImpl implements PhoneEntityManager {
 	

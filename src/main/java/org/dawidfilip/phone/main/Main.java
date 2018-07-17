@@ -3,20 +3,23 @@ package org.dawidfilip.phone.main;
 import static org.dawidfilip.phone.common.PrintBulider.*;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
-import org.dawidfilip.bean.PhoneEntityManager;
 import org.dawidfilip.dao.PhoneTestDao;
-import org.dawidfilip.phone.app.configuration.ApplicationConfiguration;
+import org.dawidfilip.phone.app.configuration.ApplicationBeanConfiguration;
 import org.dawidfilip.phone.common.PhoneTestBuilder;
+//import org.springframework.boot.SpringApplication;
+//import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
+//@SpringBootApplication
 public class Main {
 	
 	public static void main(String[] args) {
-		print("Starting application: '" + Main.class.getSimpleName() + "' class executing!");
+		
+		//SpringApplication.run(Main.class, args);
+		
+		/*print("Starting application: '" + Main.class.getSimpleName() + "' class executing!");
 		
 		
 		AbstractApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfiguration.class); 
@@ -34,6 +37,8 @@ public class Main {
 		
 		phoneEntityManager.getEntityManagerFactory().close();
 		phoneEntityManager.close();
+		
+		print("Closing application: '" + Main.class.getSimpleName() + "'!");*/
 		
 	}	
 	

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
-public class ApplicationConfiguration {
+public class ApplicationBeanConfiguration {
 	
 	@Bean(name = "phoneEntityManager")
 	@Scope(scopeName = ConfigurableBeanFactory.SCOPE_SINGLETON)
