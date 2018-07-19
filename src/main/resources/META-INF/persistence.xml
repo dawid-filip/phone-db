@@ -12,6 +12,7 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/phonedb?serverTimezone=CET"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect"/>
 			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			<property name="hibernate.show_sql" value="true"/>
 		</properties>
 	</persistence-unit>
 </persistence>

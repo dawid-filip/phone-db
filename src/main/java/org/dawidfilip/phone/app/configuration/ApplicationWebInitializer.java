@@ -2,11 +2,12 @@ package org.dawidfilip.phone.app.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class ApplicationWebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 	 
 	@Override
     protected Class<?>[] getRootConfigClasses() {
-    	Class[] webServices = new Class[] {
+    	@SuppressWarnings("rawtypes")
+		Class[] webServices = new Class[] {
     			ApplicationWebConfiguration.class
     	};
         return webServices;

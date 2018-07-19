@@ -4,9 +4,9 @@ import static org.dawidfilip.phone.common.PrintBulider.*;
 
 import javax.persistence.EntityManager;
 
-import org.dawidfilip.dao.PhoneTestDao;
+import org.dawidfilip.dao.PhoneDAOImpl;
 import org.dawidfilip.phone.app.configuration.ApplicationBeanConfiguration;
-import org.dawidfilip.phone.common.PhoneTestBuilder;
+import org.dawidfilip.phone.common.PhoneBuilder;
 //import org.springframework.boot.SpringApplication;
 //import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
