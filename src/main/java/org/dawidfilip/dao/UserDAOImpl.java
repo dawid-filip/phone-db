@@ -5,13 +5,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import org.apache.log4j.Logger;
-import org.dawidfilip.phone.entity.Phone;
+import org.dawidfilip.phone.entity.User;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PhoneDAOImpl implements PhoneDAO<Phone, Long> {
+public class UserDAOImpl implements UserDAO<User, String> {
 
-	private static Logger LOGGER = Logger.getLogger(PhoneDAOImpl.class.getSimpleName());
+	private static Logger LOGGER = Logger.getLogger(UserDAOImpl.class.getSimpleName());
 
 	private EntityManager entityManager;
 
@@ -19,47 +19,46 @@ public class PhoneDAOImpl implements PhoneDAO<Phone, Long> {
 		this.entityManager = entityManager;
 	}
 
-	public void add(Phone entity) {
+	public void add(User entity) {
 		entityManager.getTransaction().begin();
 		entityManager.persist(entity);
-		entityManager.persist(entity.getSensor());
 		entityManager.getTransaction().commit();
 		LOGGER.info("Entity " + entity.toString() + " has been added.");
 	}
 
-	public void update(Phone entity) {
+	public void update(User entity) {
 		entityManager.getTransaction().begin();
 		entityManager.merge(entity);
 		entityManager.getTransaction().commit();
 		LOGGER.info("Entity " + entity.toString() + " has been updated.");
 	}
 
-	public void delete(Phone entity) {
+	public void delete(User entity) {
 		entityManager.getTransaction().begin();
 		entityManager.remove(entity);
 		entityManager.getTransaction().commit();
 		LOGGER.info("Entity " + entity.toString() + " has been removed.");
 	}
 
-	public Phone find(Long key) {
+	public User find(String key) {
 		entityManager.getTransaction().begin();
-		Phone phone = entityManager.find(Phone.class, key);
+		User user = entityManager.find(User.class, key);
 		entityManager.getTransaction().commit();
 		
-		if (phone==null) 
-			phone = new Phone();
+		if (user==null) 
+			user = new User();
 		
-		LOGGER.info("Entity with " + key + " and content " + phone.toString() + " has been found.");
-		return phone;
+		LOGGER.info("Entity with " + key + " and content " + user.toString() + " has been found.");
+		return user;
 	}
 
-	public List<Phone> findAll() {
+	public List<User> findAll() {
 		entityManager.getTransaction().begin();
-		List<Phone> phones = entityManager.createNamedQuery(Phone.class.getSimpleName() + ".findAll", Phone.class)
+		List<User> users = entityManager.createNamedQuery(User.class.getSimpleName() + ".findAll", User.class)
 				.getResultList();
 		entityManager.getTransaction().commit();
-		LOGGER.info("Entities " + this.getClass().getSimpleName() + " in size of " + phones.size() + " has been found.");
-		return phones;
+		LOGGER.info("Entities " + this.getClass().getSimpleName() + " in size of " + users.size() + " has been found.");
+		return users;
 	}
 
 }

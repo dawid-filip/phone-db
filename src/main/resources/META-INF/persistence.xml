@@ -5,6 +5,9 @@
              
 	<persistence-unit name="unitPhoneDB" transaction-type="RESOURCE_LOCAL">	
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<class>org.dawidfilip.phone.entity.Phone</class>
+		<class>org.dawidfilip.phone.entity.Sensor</class>
+		<class>org.dawidfilip.phone.entity.User</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.user" value="user"/>

@@ -1,25 +1,38 @@
 package org.dawidfilip.phone.common;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
-import org.dawidfilip.phone.model.Phone;
+import org.dawidfilip.phone.entity.Phone;
+import org.dawidfilip.phone.entity.Sensor;
+import org.dawidfilip.phone.entity.User;
 
 public class PhoneBuilder {
 	
 	private PhoneBuilder() {
 	}
 	
-	public static Phone creatDummyPhoneTest() {
-		return new Phone("Sony", "Xperia Z3 Compact", 2299.99);
+	public static Phone creatDummyPhone() {
+		return new Phone("Sony", "Xperia Z1 Compact", "L39h, Xperia Z1 HSPA", (short)3000, (short)16, (short)2, null);
+	}
+	
+	public static Phone createDummyRandomPhone() {
+		return new Phone("Sony_"+randomInt(), "Model_"+randomInt(), "N/A", (short)3000, (short)16, (short)2, null);
+	}
+	public static Phone createDummyRandomPhoneAndSensor() {
+		Phone p = new Phone("Sony_"+randomInt(), "Model_"+randomInt(), "N/A", (short)3000, (short)16, (short)2, null);
+		p.setSensor(new Sensor(randomBoolean(), randomBoolean(), randomBoolean(), randomBoolean()));
+		return p;
 	}
 	
 	public static List<Phone> commitDummyPhoneList() {
-		Phone phone1 = new Phone("Sony", "Xperia Z1 Compact", 1299.99);
-		Phone phone2 = new Phone("LG", "G6", 1622.89);
-		Phone phone3 = new Phone("Xiaomi", "Redmi X5", 699.00);
-		Phone phone4 = new Phone("Nokia", "3310", 99.00);
-		Phone phone5 = new Phone("Huwai", "PS", 999.00);
+		Phone phone1 = new Phone("Sony", "Xperia Z1 Compact", "L39h, Xperia Z1 HSPA", (short)3000, (short)16, (short)2, null);
+		Phone phone2 = new Phone("Nokia", "Supra", "-", (short)2400, (short)32, (short)4, null);
+		Phone phone3 = new Phone("LG", "A7", "-", (short)2200, (short)64, (short)6, null);
+		Phone phone4 = new Phone("Xiaomi", "Redmi 4X", "-", (short)3500, (short)128, (short)8, null);
+		Phone phone5 = new Phone("Vita", "WG1", "-", (short)3700, (short)24, (short)3, null);
 
 		List<Phone> phones = new ArrayList<Phone>();
 		phones.add(phone1);
@@ -31,4 +44,19 @@ public class PhoneBuilder {
 		return phones;
 	}
 
+	public static List<Phone> commitDummyPhoneAndSensorList() {
+		List<Phone> phones = commitDummyPhoneList();
+		for (Phone p : phones) {
+			p.setSensor(new Sensor(randomBoolean(), randomBoolean(), randomBoolean(), randomBoolean()));
+		}
+		return phones;
+	}
+
+	private static int randomInt() {
+		return new Random().nextInt(100) + 1;
+	}
+	private static boolean randomBoolean() {
+		return new Random().nextBoolean();
+	}
+	
 }

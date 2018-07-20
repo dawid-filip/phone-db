@@ -1,5 +1,5 @@
 package org.dawidfilip.dao;
 
-public interface PhoneDAO {
+public interface PhoneDAO<T, K> extends BaseJPQL<T, K> {
 
 }
