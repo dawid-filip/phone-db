@@ -2,43 +2,42 @@ package org.dawidfilip.dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
 import org.apache.log4j.Logger;
 import org.dawidfilip.phone.entity.User;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserDAOImpl implements UserDAO<User, String> {
+public class UserDAOImpl extends BaseDMLDAO { //implements UserDAO<User, String> {
 
 	private static Logger LOGGER = Logger.getLogger(UserDAOImpl.class.getSimpleName());
 
-	private EntityManager entityManager;
+//	private EntityManager entityManager;
+//
+//	public void setEntityManager(EntityManager entityManager) {
+//		this.entityManager = entityManager;
+//	}
 
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
-
-	public void add(User entity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(entity);
-		entityManager.getTransaction().commit();
-		LOGGER.info("Entity " + entity.toString() + " has been added.");
-	}
-
-	public void update(User entity) {
-		entityManager.getTransaction().begin();
-		entityManager.merge(entity);
-		entityManager.getTransaction().commit();
-		LOGGER.info("Entity " + entity.toString() + " has been updated.");
-	}
-
-	public void delete(User entity) {
-		entityManager.getTransaction().begin();
-		entityManager.remove(entity);
-		entityManager.getTransaction().commit();
-		LOGGER.info("Entity " + entity.toString() + " has been removed.");
-	}
+//	@Override
+//	public void add(User entity) {
+//		entityManager.getTransaction().begin();
+//		entityManager.persist(entity);
+//		entityManager.getTransaction().commit();
+//		LOGGER.info("Entity " + entity.toString() + " has been added.");
+//	}
+//
+//	public void update(User entity) {
+//		entityManager.getTransaction().begin();
+//		entityManager.merge(entity);
+//		entityManager.getTransaction().commit();
+//		LOGGER.info("Entity " + entity.toString() + " has been updated.");
+//	}
+//
+//	public void delete(User entity) {
+//		entityManager.getTransaction().begin();
+//		entityManager.remove(entity);
+//		entityManager.getTransaction().commit();
+//		LOGGER.info("Entity " + entity.toString() + " has been removed.");
+//	}
 
 	public User find(String key) {
 		entityManager.getTransaction().begin();

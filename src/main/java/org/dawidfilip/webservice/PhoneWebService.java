@@ -4,12 +4,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.dawidfilip.dao.PhoneDAOImpl;
-import org.dawidfilip.phone.app.configuration.ApplicationBeanConfiguration;
-import org.dawidfilip.phone.common.CommonBuilder;
 import org.dawidfilip.phone.common.PhoneBuilder;
 import org.dawidfilip.phone.entity.Phone;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,8 +19,6 @@ import static org.dawidfilip.phone.common.CommonBuilder.CONTEXT;
 public class PhoneWebService {
 	
 	private Logger LOGGER = Logger.getLogger(PhoneWebService.class.getSimpleName());
-	
-//	private static final AbstractApplicationContext context = new AnnotationConfigApplicationContext(ApplicationBeanConfiguration.class); 
 	
 	@GetMapping(path = "add/brand/{brand}/model/{model}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Phone add(@PathVariable("brand") String brand, @PathVariable("model") String model) {
@@ -47,6 +41,5 @@ public class PhoneWebService {
 		PhoneDAOImpl phoneDAOImpl = CONTEXT.getBean("phoneDAO", PhoneDAOImpl.class);
 		return phoneDAOImpl.find(id);
 	}
-	
  	
 }

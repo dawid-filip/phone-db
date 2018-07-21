@@ -2,45 +2,43 @@ package org.dawidfilip.dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
 import org.apache.log4j.Logger;
 import org.dawidfilip.phone.entity.Phone;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PhoneDAOImpl implements PhoneDAO<Phone, Long> {
+public class PhoneDAOImpl extends BaseDMLDAO implements BaseSELECT<Phone, Long> { //PhoneDAO<Phone, Long> {
 
 	private static Logger LOGGER = Logger.getLogger(PhoneDAOImpl.class.getSimpleName());
 
-	private EntityManager entityManager;
+//	private EntityManager entityManager;
+//
+//	public void setEntityManager(EntityManager entityManager) {
+//		this.entityManager = entityManager;
+//	}
+//
+//	public void add(Phone entity) {
+//		entityManager.getTransaction().begin();
+//		entityManager.persist(entity);
+//		entityManager.getTransaction().commit();
+//		LOGGER.info("Entity " + entity.toString() + " has been added.");
+//	}
+//
+//	public void update(Phone entity) {
+//		entityManager.getTransaction().begin();
+//		entityManager.merge(entity);
+//		entityManager.getTransaction().commit();
+//		LOGGER.info("Entity " + entity.toString() + " has been updated.");
+//	}
+//
+//	public void delete(Phone entity) {
+//		entityManager.getTransaction().begin();
+//		entityManager.remove(entity);
+//		entityManager.getTransaction().commit();
+//		LOGGER.info("Entity " + entity.toString() + " has been removed.");
+//	}
 
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
-
-	public void add(Phone entity) {
-		entityManager.getTransaction().begin();
-		entityManager.persist(entity);
-		entityManager.persist(entity.getSensor());
-		entityManager.getTransaction().commit();
-		LOGGER.info("Entity " + entity.toString() + " has been added.");
-	}
-
-	public void update(Phone entity) {
-		entityManager.getTransaction().begin();
-		entityManager.merge(entity);
-		entityManager.getTransaction().commit();
-		LOGGER.info("Entity " + entity.toString() + " has been updated.");
-	}
-
-	public void delete(Phone entity) {
-		entityManager.getTransaction().begin();
-		entityManager.remove(entity);
-		entityManager.getTransaction().commit();
-		LOGGER.info("Entity " + entity.toString() + " has been removed.");
-	}
-
+	
 	public Phone find(Long key) {
 		entityManager.getTransaction().begin();
 		Phone phone = entityManager.find(Phone.class, key);

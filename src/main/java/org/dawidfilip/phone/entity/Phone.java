@@ -1,5 +1,6 @@
 package org.dawidfilip.phone.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,10 +26,10 @@ public class Phone {
 	@Column(name = "ID")
 	private long id;
 
-	@Column(name = "BRAND", nullable = false, length = 100)
+	@Column(name = "BRAND", nullable = false, length = 85)
 	private String brand;
 
-	@Column(name = "MODEL", columnDefinition = "VARCHAR(100) NOT NULL")
+	@Column(name = "MODEL", nullable = false, length = 85)
 	private String model;
 
 	@Column(nullable = true)
@@ -38,7 +39,7 @@ public class Phone {
 	private short internalMemory;
 	private short ram;
 
-	@OneToOne
+	@OneToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "sensorId")
 	private Sensor sensor;
 

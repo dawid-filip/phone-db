@@ -1,5 +1,5 @@
 package org.dawidfilip.dao;
 
-public interface EntityManager {
+public interface BaseEntityManager {
 	void setEntityManager(javax.persistence.EntityManager entityManager);
 }

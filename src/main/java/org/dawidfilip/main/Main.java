@@ -1,4 +1,4 @@
-package org.dawidfilip.phone.main;
+package org.dawidfilip.main;
 
 import static org.dawidfilip.phone.common.PrintBulider.*;
 
