@@ -11,34 +11,6 @@ public class UserDAOImpl extends BaseDMLDAO { //implements UserDAO<User, String>
 
 	private static Logger LOGGER = Logger.getLogger(UserDAOImpl.class.getSimpleName());
 
-//	private EntityManager entityManager;
-//
-//	public void setEntityManager(EntityManager entityManager) {
-//		this.entityManager = entityManager;
-//	}
-
-//	@Override
-//	public void add(User entity) {
-//		entityManager.getTransaction().begin();
-//		entityManager.persist(entity);
-//		entityManager.getTransaction().commit();
-//		LOGGER.info("Entity " + entity.toString() + " has been added.");
-//	}
-//
-//	public void update(User entity) {
-//		entityManager.getTransaction().begin();
-//		entityManager.merge(entity);
-//		entityManager.getTransaction().commit();
-//		LOGGER.info("Entity " + entity.toString() + " has been updated.");
-//	}
-//
-//	public void delete(User entity) {
-//		entityManager.getTransaction().begin();
-//		entityManager.remove(entity);
-//		entityManager.getTransaction().commit();
-//		LOGGER.info("Entity " + entity.toString() + " has been removed.");
-//	}
-
 	public User find(String key) {
 		entityManager.getTransaction().begin();
 		User user = entityManager.find(User.class, key);
