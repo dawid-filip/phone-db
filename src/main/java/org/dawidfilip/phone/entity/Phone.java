@@ -39,7 +39,7 @@ public class Phone {
 	private short internalMemory;
 	private short ram;
 
-	@OneToOne(cascade = { CascadeType.ALL })
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
 	@JoinColumn(name = "sensorId")
 	private Sensor sensor;
 

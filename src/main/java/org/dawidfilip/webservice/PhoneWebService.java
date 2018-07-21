@@ -41,5 +41,14 @@ public class PhoneWebService {
 		PhoneDAOImpl phoneDAOImpl = CONTEXT.getBean("phoneDAO", PhoneDAOImpl.class);
 		return phoneDAOImpl.find(id);
 	}
+	
+	@GetMapping(path = "delete/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Phone delete(@PathVariable("id") Long id) {
+		LOGGER.info("find");
+		PhoneDAOImpl phoneDAOImpl = CONTEXT.getBean("phoneDAO", PhoneDAOImpl.class);
+		Phone phone = phoneDAOImpl.find(id);
+		phoneDAOImpl.delete(phone);
+		return phone;
+	}
  	
 }
