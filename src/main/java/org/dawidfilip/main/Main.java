@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import org.dawidfilip.dao.PhoneDAOImpl;
 import org.dawidfilip.phone.app.configuration.ApplicationBeanConfiguration;
 import org.dawidfilip.phone.common.PhoneBuilder;
+import org.dawidfilip.phone.entity.Phone;
 //import org.springframework.boot.SpringApplication;
 //import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -15,7 +16,17 @@ import org.springframework.context.support.AbstractApplicationContext;
 //@SpringBootApplication
 public class Main {
 	
+	
+	private static void typeTest(Class<?> type) {
+		System.out.println(type);
+		System.out.println(type.getName());
+		System.out.println(type.getSimpleName());
+	}
+	
 	public static void main(String[] args) {
+		
+		typeTest(Phone.class);
+		
 		
 		//SpringApplication.run(Main.class, args);
 		

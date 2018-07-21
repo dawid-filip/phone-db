@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import org.dawidfilip.dao.PhoneDAOImpl;
 import org.dawidfilip.phone.common.PhoneBuilder;
 import org.dawidfilip.phone.entity.Phone;
+import org.dawidfilip.phone.entity.User;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,25 +31,27 @@ public class PhoneWebService {
 	}
 
 	@GetMapping(path = "all", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Phone> findAll() {
-		LOGGER.info("findAll");
+	public List<Phone> findAll2() {
+		LOGGER.info("findAll2");
 		PhoneDAOImpl phoneDAOImpl = CONTEXT.getBean("phoneDAO", PhoneDAOImpl.class);
-		return phoneDAOImpl.findAll();
+		return (List<Phone>) phoneDAOImpl.findAll();
 	}
+	
 	@GetMapping(path = "one/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Phone find(@PathVariable("id") Long id) {
 		LOGGER.info("find");
 		PhoneDAOImpl phoneDAOImpl = CONTEXT.getBean("phoneDAO", PhoneDAOImpl.class);
-		return phoneDAOImpl.find(id);
+		return (Phone) phoneDAOImpl.find(id);
 	}
 	
 	@GetMapping(path = "delete/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Phone delete(@PathVariable("id") Long id) {
 		LOGGER.info("find");
 		PhoneDAOImpl phoneDAOImpl = CONTEXT.getBean("phoneDAO", PhoneDAOImpl.class);
-		Phone phone = phoneDAOImpl.find(id);
+		Phone phone = (Phone) phoneDAOImpl.find(id);
 		phoneDAOImpl.delete(phone);
 		return phone;
 	}
- 	
+	
+	
 }

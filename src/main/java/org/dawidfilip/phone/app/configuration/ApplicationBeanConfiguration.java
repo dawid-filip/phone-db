@@ -5,6 +5,8 @@ import javax.persistence.EntityManager;
 import org.dawidfilip.bean.PhoneEntityManagerImpl;
 import org.dawidfilip.dao.PhoneDAOImpl;
 import org.dawidfilip.dao.UserDAOImpl;
+import org.dawidfilip.phone.entity.Phone;
+import org.dawidfilip.phone.entity.User;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +26,7 @@ public class ApplicationBeanConfiguration {
 	public PhoneDAOImpl phoneDAO() {
 		PhoneDAOImpl phoneDAO = new PhoneDAOImpl();
 		phoneDAO.setEntityManager(phoneEntityManager());
+		phoneDAO.setType(Phone.class);
 		return phoneDAO;
 	}
 	
@@ -32,6 +35,7 @@ public class ApplicationBeanConfiguration {
 	public UserDAOImpl userDAO() {
 		UserDAOImpl userDAO = new UserDAOImpl();
 		userDAO.setEntityManager(phoneEntityManager());
+		userDAO.setType(User.class);
 		return userDAO;
 	}
 	

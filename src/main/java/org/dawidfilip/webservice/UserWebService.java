@@ -39,17 +39,19 @@ public class UserWebService {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	@GetMapping(path = "all", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<User> findAll() {
 		LOGGER.info("findAll");
 		UserDAOImpl userDAOImpl = CONTEXT.getBean("userDAO", UserDAOImpl.class);
-		return userDAOImpl.findAll();
+		return (List<User>) userDAOImpl.findAll();
 	}
+	
 	@GetMapping(path = "one/userName/{userName}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public User find(@PathVariable("userName") String userName) {
 		LOGGER.info("find");
 		UserDAOImpl userDAOImpl = CONTEXT.getBean("userDAO", UserDAOImpl.class);
-		return userDAOImpl.find(userName);
+		return (User) userDAOImpl.find(userName);
 	}
 	
 	
