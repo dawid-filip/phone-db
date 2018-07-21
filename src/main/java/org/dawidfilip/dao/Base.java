@@ -6,9 +6,9 @@ import javax.persistence.EntityManager;
 
 import org.apache.log4j.Logger;
 
-public abstract class BaseDMLDAO implements BaseEntityManager {
+public abstract class Base implements BaseDAO {
 	
-	private static Logger LOGGER = Logger.getLogger(BaseDMLDAO.class.getSimpleName());
+	private static Logger LOGGER = Logger.getLogger(Base.class.getSimpleName());
 	
 	protected EntityManager entityManager;
 	private Class<?> type;
@@ -50,7 +50,7 @@ public abstract class BaseDMLDAO implements BaseEntityManager {
 		return objects;
 	}
 
-	public Object find(Object key) {
+	public Object findById(Object key) {
 		entityManager.getTransaction().begin();
 		Object object = entityManager.createNamedQuery(type.getSimpleName() + ".find")
 				.setParameter("id", key)

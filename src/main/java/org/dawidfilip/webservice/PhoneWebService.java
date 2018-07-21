@@ -41,14 +41,14 @@ public class PhoneWebService {
 	public Phone find(@PathVariable("id") Long id) {
 		LOGGER.info("find");
 		PhoneDAOImpl phoneDAOImpl = CONTEXT.getBean("phoneDAO", PhoneDAOImpl.class);
-		return (Phone) phoneDAOImpl.find(id);
+		return (Phone) phoneDAOImpl.findById(id);
 	}
 	
 	@GetMapping(path = "delete/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Phone delete(@PathVariable("id") Long id) {
 		LOGGER.info("find");
 		PhoneDAOImpl phoneDAOImpl = CONTEXT.getBean("phoneDAO", PhoneDAOImpl.class);
-		Phone phone = (Phone) phoneDAOImpl.find(id);
+		Phone phone = (Phone) phoneDAOImpl.findById(id);
 		phoneDAOImpl.delete(phone);
 		return phone;
 	}

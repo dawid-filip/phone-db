@@ -51,7 +51,7 @@ public class UserWebService {
 	public User find(@PathVariable("userName") String userName) {
 		LOGGER.info("find");
 		UserDAOImpl userDAOImpl = CONTEXT.getBean("userDAO", UserDAOImpl.class);
-		return (User) userDAOImpl.find(userName);
+		return (User) userDAOImpl.findById(userName);
 	}
 	
 	
