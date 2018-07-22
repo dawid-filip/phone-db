@@ -1,5 +1,8 @@
 package org.dawidfilip.dao;
 
-public interface PhoneDAO {
+import org.dawidfilip.phone.entity.Phone;
+import org.springframework.data.repository.CrudRepository;
 
+public interface PhoneDAO { //extends CrudRepository<Phone, Long> {
+	
 }
