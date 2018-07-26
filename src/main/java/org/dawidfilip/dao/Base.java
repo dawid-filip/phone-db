@@ -26,6 +26,13 @@ public abstract class Base implements BaseDAO {
 		entityManager.getTransaction().commit();
 		LOGGER.info("Entity " + entity.toString() + " has been added.");
 	}
+	
+	public void addAll(List<Object> entities) {
+		LOGGER.info("Adding all " + entities != null ? entities.size() : null + " entities...");
+		for (Object entity : entities) {
+			add(entity);
+		}
+	}
 
 	public void update(Object entity) {
 		entityManager.getTransaction().begin();
@@ -33,12 +40,26 @@ public abstract class Base implements BaseDAO {
 		entityManager.getTransaction().commit();
 		LOGGER.info("Entity " + entity.toString() + " has been updated.");
 	}
+	
+	public void updateAll(List<Object> entities) {
+		LOGGER.info("Updating all " + entities != null ? entities.size() : null + " entities...");
+		for (Object entity : entities) {
+			update(entity);
+		}
+	}
 
 	public void delete(Object entity) {
 		entityManager.getTransaction().begin();
 		entityManager.remove(entity);
 		entityManager.getTransaction().commit();
 		LOGGER.info("Entity " + entity.toString() + " has been removed.");
+	}
+	
+	public void deleteAll(List<Object> entities) {
+		LOGGER.info("Deleting all " + entities != null ? entities.size() : null + " entities...");
+		for (Object entity : entities) {
+			delete(entity);
+		}
 	}
 	
 	public List<?> findAll() {
