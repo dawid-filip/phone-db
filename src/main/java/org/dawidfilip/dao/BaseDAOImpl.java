@@ -6,19 +6,26 @@ import javax.persistence.EntityManager;
 
 import org.apache.log4j.Logger;
 
-public abstract class Base implements BaseDAO {
+public abstract class BaseDAOImpl implements BaseDAO {
 	
-	private static Logger LOGGER = Logger.getLogger(Base.class.getSimpleName());
+	private static Logger LOGGER = Logger.getLogger(BaseDAOImpl.class.getSimpleName());
 	
 	protected EntityManager entityManager;
-	private Class<?> type;
+	//private Class<?> type;
+	private String simpleClassName;
 	
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
 	public void setType(Class<?> type) {
-		this.type = type;
+		//this.type = type;
+		setSimpleClassName(type);
 	}
+	
+	private void setSimpleClassName(Class<?> type) {
+		this.simpleClassName = type.getSimpleName();
+	}
+	
 	
 	public void add(Object entity) {
 		entityManager.getTransaction().begin();	
@@ -64,16 +71,16 @@ public abstract class Base implements BaseDAO {
 	
 	public List<?> findAll() {
 		entityManager.getTransaction().begin();
-		List<?> objects = entityManager.createNamedQuery(type.getSimpleName() + ".findAll")
+		List<?> objects = entityManager.createNamedQuery(simpleClassName + ".findAll")
 				.getResultList();
 		entityManager.getTransaction().commit();
-		LOGGER.info("Entities " + type.getSimpleName() + " in size of " + objects.size() + " has been found.");
+		LOGGER.info("Entities " + simpleClassName + " in size of " + objects.size() + " has been found.");
 		return objects;
 	}
 
 	public Object findById(Object key) {
 		entityManager.getTransaction().begin();
-		Object object = entityManager.createNamedQuery(type.getSimpleName() + ".find")
+		Object object = entityManager.createNamedQuery(simpleClassName + ".find")
 				.setParameter("id", key)
 				.getSingleResult();
 		entityManager.getTransaction().commit();
@@ -84,8 +91,6 @@ public abstract class Base implements BaseDAO {
 		LOGGER.info("Entity with " + key + " and content " + object.toString() + " has been found.");
 		return object;
 	}
-
-	
 	
 }
 

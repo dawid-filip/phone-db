@@ -10,8 +10,10 @@ import org.dawidfilip.phone.entity.User;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 
+//@Lazy(value = false)
 @Configuration
 public class ApplicationBeanConfiguration {
 
@@ -38,6 +40,5 @@ public class ApplicationBeanConfiguration {
 		userDAO.setType(User.class);
 		return userDAO;
 	}
-	
 	
 }
