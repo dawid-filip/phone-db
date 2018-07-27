@@ -31,8 +31,8 @@ public class PhoneWebService {
 	}
 
 	@GetMapping(path = "all", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Phone> findAll2() {
-		LOGGER.info("findAll2");
+	public List<Phone> findAll() {
+		LOGGER.info("findAll");
 		PhoneDAOImpl phoneDAOImpl = CONTEXT.getBean("phoneDAO", PhoneDAOImpl.class);
 		return (List<Phone>) phoneDAOImpl.findAll();
 	}

@@ -69,6 +69,15 @@ public abstract class BaseDAOImpl implements BaseDAO {
 		}
 	}
 	
+	public void deleteById(Object key) {
+		entityManager.getTransaction().begin();
+		Object object = entityManager.createNamedQuery(simpleClassName + ".delete")
+				.setParameter("id", key)
+				.getSingleResult();
+		entityManager.getTransaction().commit();
+		LOGGER.info("Entity with " + key + " key has been deleted.");
+	}
+	
 	public List<?> findAll() {
 		entityManager.getTransaction().begin();
 		List<?> objects = entityManager.createNamedQuery(simpleClassName + ".findAll")
