@@ -14,6 +14,7 @@ import info.dawidfilip.dao.PhoneDAOImpl;
 import info.dawidfilip.dao.UserDAOImpl;
 import info.dawidfilip.phone.entity.Phone;
 import info.dawidfilip.phone.entity.User;
+import info.dawidfilip.service.PhoneService;
 import info.dawidfilip.service.PhoneServiceImpl;
 
 //@Lazy(value = false)
@@ -44,10 +45,10 @@ public class ApplicationBeanConfiguration {
 		return userDAO;
 	}
 	
-	@Bean(name = "phoneServiceImpl")
+	@Bean(name = "phoneService")
 	@Scope(scopeName = ConfigurableBeanFactory.SCOPE_SINGLETON)
-	public PhoneServiceImpl phoneServiceImpl() {
-		PhoneServiceImpl phoneServiceImpl = new PhoneServiceImpl();
+	public PhoneService phoneServiceImpl() {
+		PhoneService phoneServiceImpl = new PhoneServiceImpl();
 		return phoneServiceImpl;
 	}
 	

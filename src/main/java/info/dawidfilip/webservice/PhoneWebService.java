@@ -5,7 +5,6 @@ import static info.dawidfilip.phone.common.CommonBuilder.CONTEXT;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import info.dawidfilip.dao.PhoneDAOImpl;
 import info.dawidfilip.phone.common.PhoneBuilder;
 import info.dawidfilip.phone.entity.Phone;
-import info.dawidfilip.service.PhoneServiceImpl;
+import info.dawidfilip.service.PhoneService;
 
 @RestController
 @RequestMapping("/phone/")
@@ -26,7 +25,8 @@ public class PhoneWebService {
 
 	@GetMapping(path = "all/all", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Phone> allAll() {
-		return CONTEXT.getBean("phoneServiceImpl", PhoneServiceImpl.class).getAll();
+		List<Phone> phones = CONTEXT.getBean("phoneService", PhoneService.class).getAll();
+		return phones;
 	}
 	
 	@GetMapping(path = "add", produces = MediaType.APPLICATION_JSON_VALUE)
