@@ -5,6 +5,7 @@ import static info.dawidfilip.phone.common.CommonBuilder.CONTEXT;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import info.dawidfilip.dao.PhoneDAOImpl;
 import info.dawidfilip.phone.common.PhoneBuilder;
 import info.dawidfilip.phone.entity.Phone;
+import info.dawidfilip.service.PhoneServiceImpl;
 
 @RestController
 @RequestMapping("/phone/")
@@ -21,6 +23,20 @@ import info.dawidfilip.phone.entity.Phone;
 public class PhoneWebService {
 	
 	private Logger LOGGER = Logger.getLogger(PhoneWebService.class.getSimpleName());
+
+	@GetMapping(path = "all/all", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Phone> allAll() {
+		return CONTEXT.getBean("phoneServiceImpl", PhoneServiceImpl.class).getAll();
+	}
+	
+	@GetMapping(path = "add", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Phone add() {
+		LOGGER.info("add");
+		PhoneDAOImpl phoneDAOImpl = CONTEXT.getBean("phoneDAO", PhoneDAOImpl.class);
+		Phone phone = PhoneBuilder.createDummyRandomPhoneAndSensor();
+		phoneDAOImpl.add(phone);
+		return phone;
+	}
 	
 	@GetMapping(path = "add/brand/{brand}/model/{model}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Phone add(@PathVariable("brand") String brand, @PathVariable("model") String model) {

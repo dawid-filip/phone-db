@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.dawidfilip.phone</groupId>
+	<groupId>info.dawidfilip.phone</groupId>
 	<artifactId>Phone-db</artifactId>
-	<version>0.0.1-PHONE</version>
+	<version>0.0.2-PHONE</version>
 	<packaging>war</packaging>
 
 	<name>Phone-db Maven Webapp</name>

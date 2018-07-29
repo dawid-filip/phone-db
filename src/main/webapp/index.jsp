@@ -6,6 +6,9 @@
 		<h2>Welcome to: <a href="http://localhost:8080/Phone-db/index.jsp">http://localhost:8080/Phone-db/index.jsp</a> page</h2>
 
 		<h3>/rest/phone</h3>
+		<a href="http://localhost:8080/Phone-db/rest/phone/add">
+			<b>/add/</b>
+		</a><br />
 		<a href="http://localhost:8080/Phone-db/rest/phone/add/brand/Sony/model/Xperia Z1 Compact">
 			<b>/add/brand/{brand}/model/{model}</b>
 		</a><br />
@@ -20,6 +23,10 @@
 		</a><br />
 		<a href="http://localhost:8080/Phone-db/rest/phone/all/delete">
 			<b>/all/delete</b>
+		</a><br />
+		
+		<a href="http://localhost:8080/Phone-db/rest/phone/all/all">
+			<b>/all/all</b>
 		</a><br />
 		
 		

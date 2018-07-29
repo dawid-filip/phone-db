@@ -14,6 +14,7 @@ import info.dawidfilip.dao.PhoneDAOImpl;
 import info.dawidfilip.dao.UserDAOImpl;
 import info.dawidfilip.phone.entity.Phone;
 import info.dawidfilip.phone.entity.User;
+import info.dawidfilip.service.PhoneServiceImpl;
 
 //@Lazy(value = false)
 @Configuration
@@ -41,6 +42,13 @@ public class ApplicationBeanConfiguration {
 		userDAO.setEntityManager(phoneEntityManager());
 		userDAO.setType(User.class);
 		return userDAO;
+	}
+	
+	@Bean(name = "phoneServiceImpl")
+	@Scope(scopeName = ConfigurableBeanFactory.SCOPE_SINGLETON)
+	public PhoneServiceImpl phoneServiceImpl() {
+		PhoneServiceImpl phoneServiceImpl = new PhoneServiceImpl();
+		return phoneServiceImpl;
 	}
 	
 }
