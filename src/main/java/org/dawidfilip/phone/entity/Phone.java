@@ -18,7 +18,8 @@ import org.hibernate.annotations.NamedQuery;
 @NamedQueries({ 
 	@NamedQuery(name = "Phone.find", query = "SELECT p FROM Phone p WHERE p.id = :id"),
 	@NamedQuery(name = "Phone.findAll", query = "SELECT p FROM Phone p"),
-	@NamedQuery(name = "Phone.delete", query = "DELETE FROM Phone p WHERE p.id = :id") 
+	@NamedQuery(name = "Phone.delete", query = "DELETE FROM Phone p WHERE p.id = :id"),
+	@NamedQuery(name = "Phone.deleteAll", query = "DELETE FROM Phone p") 
 })
 public class Phone {
 
@@ -36,8 +37,11 @@ public class Phone {
 	@Column(name = "Alias", nullable = true)
 	private String alias;
 
+	@Column(name = "Batery")
 	private short batery;
+	@Column(name = "InternalMemory")
 	private short internalMemory;
+	@Column(name = "Ram")
 	private short ram;
 
 	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH })
@@ -47,24 +51,16 @@ public class Phone {
 	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH })
 	@JoinColumn(name = "cameraFrontId")
 	private Camera cameraFront;
+	
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH })
+	@JoinColumn(name = "cameraBackId")
+	private Camera cameraBack;
 
 	public Phone(){
 	}
-	
-	public Phone(String brand, String model, String alias, short batery, short internalMemory, short ram,
-			Sensor sensor, Camera cameraFront) {
-		this.brand = brand;
-		this.model = model;
-		this.alias = alias;
-		this.batery = batery;
-		this.internalMemory = internalMemory;
-		this.ram = ram;
-		this.sensor = sensor;
-		this.cameraFront = cameraFront;
-	}
-	
+
 	public Phone(long id, String brand, String model, String alias, short batery, short internalMemory, short ram,
-			Sensor sensor, Camera cameraFront) {
+			Sensor sensor, Camera cameraFront, Camera cameraBack) {
 		super();
 		this.id = id;
 		this.brand = brand;
@@ -75,6 +71,21 @@ public class Phone {
 		this.ram = ram;
 		this.sensor = sensor;
 		this.cameraFront = cameraFront;
+		this.cameraBack = cameraBack;
+	}
+
+	public Phone(String brand, String model, String alias, short batery, short internalMemory, short ram, Sensor sensor,
+			Camera cameraFront, Camera cameraBack) {
+		super();
+		this.brand = brand;
+		this.model = model;
+		this.alias = alias;
+		this.batery = batery;
+		this.internalMemory = internalMemory;
+		this.ram = ram;
+		this.sensor = sensor;
+		this.cameraFront = cameraFront;
+		this.cameraBack = cameraBack;
 	}
 
 	public long getId() {
@@ -149,11 +160,21 @@ public class Phone {
 		this.cameraFront = cameraFront;
 	}
 
+	public Camera getCameraBack() {
+		return cameraBack;
+	}
+
+	public void setCameraBack(Camera cameraBack) {
+		this.cameraBack = cameraBack;
+	}
+
 	@Override
 	public String toString() {
 		return "Phone [id=" + id + ", brand=" + brand + ", model=" + model + ", alias=" + alias + ", batery=" + batery
 				+ ", internalMemory=" + internalMemory + ", ram=" + ram + ", sensor=" + sensor + ", cameraFront="
-				+ cameraFront + "]";
+				+ cameraFront + ", cameraBack=" + cameraBack + "]";
 	}
-
+	
+	
+	
 }

@@ -2,6 +2,8 @@ package org.dawidfilip.phone.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,9 +22,11 @@ public class Camera {
 	@Column(name = "Model", nullable = false, length = 50)
 	private String model;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "Matrix", length = 10)
 	private Matrix matrix;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "Resolution", length = 25)
 	private Resolution resolution;
 
@@ -77,6 +81,9 @@ public class Camera {
 		this.resolution = resolution;
 	}
 
-	
-	
+	@Override
+	public String toString() {
+		return "Camera [id=" + id + ", model=" + model + ", matrix=" + matrix + ", resolution=" + resolution + "]";
+	}
+
 }

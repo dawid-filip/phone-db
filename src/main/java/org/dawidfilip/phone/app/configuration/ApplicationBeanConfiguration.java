@@ -7,6 +7,7 @@ import org.dawidfilip.dao.PhoneDAOImpl;
 import org.dawidfilip.dao.UserDAOImpl;
 import org.dawidfilip.phone.entity.Phone;
 import org.dawidfilip.phone.entity.User;
+import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -7,10 +7,10 @@ import java.util.Random;
 
 public enum Resolution {
 	
-	VGA_640x480("640×480"),
-	HD_1280x720("1280×720 px"),
-	FHD_1920x1080("1920x1080 px"),
-	WQHD_2560x1440("2560x1440 px");
+	_640x480("640×480"),
+	_1280x720("1280×720 px"),
+	_1920x1080("1920x1080 px"),
+	_2560x1440("2560x1440 px");
 	
 	private String value;
 
@@ -26,7 +26,7 @@ public enum Resolution {
 	
 	@Override
 	public String toString() {
-		return value;
+		return value + " test test";
 	}
 
 }

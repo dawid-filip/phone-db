@@ -16,9 +16,13 @@ public class Sensor {
 	@Column(name = "ID")
 	private long id;
 
+	@Column(name = "Accelerometer")
 	private boolean accelerometer;
+	@Column(name = "AmbientTemperature")
 	private boolean ambientTemperature;
+	@Column(name = "MagneticField")
 	private boolean magneticField;
+	@Column(name = "Gyroscope")
 	private boolean gyroscope;
 	
 	public Sensor(){
@@ -71,4 +75,11 @@ public class Sensor {
 		this.gyroscope = gyroscope;
 	}
 
+	@Override
+	public String toString() {
+		return "Sensor [id=" + id + ", accelerometer=" + accelerometer + ", ambientTemperature=" + ambientTemperature
+				+ ", magneticField=" + magneticField + ", gyroscope=" + gyroscope + "]";
+	}
+
+	
 }

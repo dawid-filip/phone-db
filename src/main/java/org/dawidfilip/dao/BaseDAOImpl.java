@@ -1,8 +1,10 @@
 package org.dawidfilip.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import org.apache.log4j.Logger;
 
@@ -55,18 +57,35 @@ public abstract class BaseDAOImpl implements BaseDAO {
 		}
 	}
 
+	//@Transactional
 	public void delete(Object entity) {
-		entityManager.getTransaction().begin();
 		entityManager.remove(entity);
-		entityManager.getTransaction().commit();
+		try {
+			entityManager.getTransaction().begin();
+			entityManager.remove(entity);
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			entityManager.getTransaction().rollback();
+//			entityManager.getEntityManagerFactory().close();
+//			entityManager.close();
+		}
 		LOGGER.info("Entity " + entity.toString() + " has been removed.");
 	}
 	
 	public void deleteAll(List<Object> entities) {
-		LOGGER.info("Deleting all " + entities != null ? entities.size() : null + " entities...");
 		for (Object entity : entities) {
 			delete(entity);
 		}
+		LOGGER.info("All listed " + entities != null ? entities.size() : null + " " + simpleClassName + " entities has been deleted.");
+	}
+	public void deleteAll() {
+		int size = findAll().size();
+		entityManager.getTransaction().begin();
+		entityManager.createNamedQuery(simpleClassName + ".deleteAll");
+		entityManager.getTransaction().commit();
+		LOGGER.info("All " + size + " " + simpleClassName + " entities has been deleted.");
 	}
 	
 	public void deleteById(Object key) {
@@ -75,7 +94,7 @@ public abstract class BaseDAOImpl implements BaseDAO {
 				.setParameter("id", key)
 				.getSingleResult();
 		entityManager.getTransaction().commit();
-		LOGGER.info("Entity with " + key + " key has been deleted.");
+		LOGGER.info("Entity " + simpleClassName + " with " + key + " key has been deleted.");
 	}
 	
 	public List<?> findAll() {

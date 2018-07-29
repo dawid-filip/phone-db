@@ -15,7 +15,8 @@ import org.hibernate.annotations.NamedQuery;
 @NamedQueries({ 
 	@NamedQuery(name = "User.find", query = "SELECT u FROM User u WHERE u.userName = :userName"),
 	@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u") ,
-	@NamedQuery(name = "User.delete", query = "DELETE FROM User u WHERE u.id = :id") 
+	@NamedQuery(name = "User.delete", query = "DELETE FROM User u WHERE u.id = :id"),
+	@NamedQuery(name = "User.deleteAll", query = "DELETE FROM User u") 
 })
 public class User {
 

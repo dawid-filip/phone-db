@@ -18,6 +18,10 @@
 		<a href="http://localhost:8080/Phone-db/rest/phone/delete/id/1">
 			<b>/delete/id/{id}</b>
 		</a><br />
+		<a href="http://localhost:8080/Phone-db/rest/phone/all/delete">
+			<b>/all/delete</b>
+		</a><br />
+		
 		
 		<br /><br />
 		

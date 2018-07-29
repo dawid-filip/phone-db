@@ -7,12 +7,13 @@ import java.util.Random;
 
 public enum Matrix {
 	
-	M_1PX("1 Mpx"),
-	M_2PX("2 Mpx"),
-	M_3PX("3 Mpx"),
-	M_5PX("5 Mpx"),
-	M_13PX("13 Mpx"),
-	M_20_7PX("20.7 Mpx");
+	_1PX("1 Mpx"),
+	_2PX("2 Mpx"),
+	_3PX("3 Mpx"),
+	_5PX("5 Mpx"),
+	_13PX("13 Mpx"),
+	_20_7PX("20.7 Mpx"),
+	_21PX("21 Mpx");
 	
 	private final String value;
 
