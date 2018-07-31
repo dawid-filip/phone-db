@@ -3,6 +3,7 @@ package info.dawidfilip.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
@@ -30,9 +31,13 @@ public abstract class BaseDAOImpl implements BaseDAO {
 	
 	
 	public void add(Object entity) {
-		entityManager.getTransaction().begin();	
-		entityManager.persist(entity);
-		entityManager.getTransaction().commit();
+		try {
+			entityManager.getTransaction().begin();	
+			entityManager.persist(entity);
+			entityManager.getTransaction().commit();
+		} catch (EntityExistsException e) {
+			entityManager.getTransaction().rollback();
+		}
 		LOGGER.info("Entity " + entity.toString() + " has been added.");
 	}
 	

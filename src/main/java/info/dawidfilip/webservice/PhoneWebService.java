@@ -8,75 +8,127 @@ import java.util.logging.Logger;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import info.dawidfilip.dao.PhoneDAOImpl;
-import info.dawidfilip.phone.common.PhoneBuilder;
+import info.dawidfilip.dto.PhoneDTO;
 import info.dawidfilip.phone.entity.Phone;
 import info.dawidfilip.service.PhoneService;
 
 @RestController
 @RequestMapping("/phone/")
-@SuppressWarnings("unchecked")
 public class PhoneWebService {
 	
 	private Logger LOGGER = Logger.getLogger(PhoneWebService.class.getSimpleName());
 
-	@GetMapping(path = "all/all", produces = MediaType.APPLICATION_JSON_VALUE)
+	private final PhoneService phoneServiceImpl = CONTEXT.getBean("phoneServiceImpl", PhoneService.class);
+	
+	@GetMapping(path = "all", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Phone> allAll() {
-		List<Phone> phones = CONTEXT.getBean("phoneService", PhoneService.class).getAll();
+		LOGGER.info("all");
+		List<Phone> phones = phoneServiceImpl.getAll();
 		return phones;
 	}
 	
-	@GetMapping(path = "add", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Phone add() {
+	@PostMapping(path = "add", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Phone add(@RequestBody PhoneDTO phoneDTO) {
 		LOGGER.info("add");
-		PhoneDAOImpl phoneDAOImpl = CONTEXT.getBean("phoneDAO", PhoneDAOImpl.class);
-		Phone phone = PhoneBuilder.createDummyRandomPhoneAndSensor();
-		phoneDAOImpl.add(phone);
+		Phone addedPhone = phoneServiceImpl.add(phoneDTO);
+		return addedPhone;
+	}
+	
+	@GetMapping(path = "add-dummy", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Phone addDummy() {
+		LOGGER.info("add-dummy");
+		Phone phone = phoneServiceImpl.addDummy();
 		return phone;
 	}
 	
-	@GetMapping(path = "add/brand/{brand}/model/{model}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Phone add(@PathVariable("brand") String brand, @PathVariable("model") String model) {
-		LOGGER.info("add");
-		PhoneDAOImpl phoneDAOImpl = CONTEXT.getBean("phoneDAO", PhoneDAOImpl.class);
-		Phone phone = PhoneBuilder.createDummyRandomPhoneAndSensor();
-		phoneDAOImpl.add(phone);
-		return phone;
-	}
-
-	@GetMapping(path = "all", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Phone> findAll() {
-		LOGGER.info("findAll");
-		PhoneDAOImpl phoneDAOImpl = CONTEXT.getBean("phoneDAO", PhoneDAOImpl.class);
-		return (List<Phone>) phoneDAOImpl.findAll();
-	}
-	
-	@GetMapping(path = "one/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "find/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Phone find(@PathVariable("id") Long id) {
 		LOGGER.info("find");
-		PhoneDAOImpl phoneDAOImpl = CONTEXT.getBean("phoneDAO", PhoneDAOImpl.class);
-		return (Phone) phoneDAOImpl.findById(id);
+		Phone phone = phoneServiceImpl.getOne(id);
+		return phone;
 	}
 	
 	@GetMapping(path = "delete/id/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Phone delete(@PathVariable("id") Long id) {
 		LOGGER.info("delete");
-		PhoneDAOImpl phoneDAOImpl = CONTEXT.getBean("phoneDAO", PhoneDAOImpl.class);
-		Phone phone = (Phone) phoneDAOImpl.findById(id);
-		phoneDAOImpl.delete(phone);
+		Phone phone = phoneServiceImpl.delete(id);
 		return phone;
 	}
+	
 	
 	@GetMapping(path = "all/delete", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String deleteAll(@PathVariable("id") Long id) {
 		LOGGER.info("deleteAll");
-		PhoneDAOImpl phoneDAOImpl = CONTEXT.getBean("phoneDAO", PhoneDAOImpl.class);
-		phoneDAOImpl.deleteAll();
+		phoneServiceImpl.deleteAll();
 		return "true";
 	}
 	
 	
 }
+
+/*
+
+	{
+		"brand":"Sony_6xxx8",
+		"model":"Model_1xxxx5",
+		"alias":"Not available",
+		"batery":3111,
+		"internalMemory":16,
+		"ram":2,
+		"sensor":{
+			"accelerometer":true,
+			"ambientTemperature":true,
+			"magneticField":false,
+			"gyroscope":false
+		},
+		"cameraFront":{
+			"model":"Sony IMX_1x2s",
+			"matrix":"_3PX",
+			"resolution":"_2560x1440"
+		},
+		"cameraBack":{
+			"model":"Sony IMX_31x22",
+			"matrix":"_21PX",
+			"resolution":"_1920x1080"
+		}
+	}
+
+
+ * 
+ * 
+ 	{
+		"phone":{
+			"id":5000,
+			"brand":"Sony_6xxx8",
+			"model":"Model_1xxxx5",
+			"alias":"Not available",
+			"batery":3111,
+			"internalMemory":16,
+			"ram":2,
+			"sensor":{
+				"id":5000,
+				"accelerometer":true,
+				"ambientTemperature":true,
+				"magneticField":false,
+				"gyroscope":false
+			},
+			"cameraFront":{
+				"id":5000,
+				"model":"Sony IMX_1x2s",
+				"matrix":"_3PX",
+				"resolution":"_2560x1440"
+			},
+			"cameraBack":{
+				"id":5001,
+				"model":"Sony IMX_31x22",
+				"matrix":"_21PX",
+				"resolution":"_1920x1080"
+			}
+		}
+	}
+*/

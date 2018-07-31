@@ -1,4 +1,4 @@
-package info.dawidfilip.dto;
+package info.dawidfilip.phone.entity;
 
 import java.util.ArrayList;
 import java.util.EnumSet;

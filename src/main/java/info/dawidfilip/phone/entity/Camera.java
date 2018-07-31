@@ -8,8 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import info.dawidfilip.dto.Matrix;
-import info.dawidfilip.dto.Resolution;
+import info.dawidfilip.dto.CameraDTO;
 
 @Entity
 public class Camera {
@@ -31,14 +30,6 @@ public class Camera {
 	private Resolution resolution;
 
 	public Camera() {
-		super();
-	}
-
-	public Camera(String model, Matrix matrix, Resolution resolution) {
-		super();
-		this.model = model;
-		this.matrix = matrix;
-		this.resolution = resolution;
 	}
 	
 	public Camera(long id, String model, Matrix matrix, Resolution resolution) {
@@ -47,6 +38,28 @@ public class Camera {
 		this.model = model;
 		this.matrix = matrix;
 		this.resolution = resolution;
+	}
+	
+	public Camera(String model, Matrix matrix, Resolution resolution) {
+		super();
+		this.model = model;
+		this.matrix = matrix;
+		this.resolution = resolution;
+	}
+	
+	public Camera(String model, String matrix, String resolution) {
+		super();
+		this.model = model;
+		this.matrix = Matrix.valueOf(Matrix.class, matrix.trim());
+		this.resolution = Resolution.valueOf(Resolution.class, resolution.trim());
+	}
+	
+	public Camera(Camera camera) {
+		this(camera.getModel(),	camera.getMatrix(),	camera.getResolution());
+	}
+	
+	public Camera(CameraDTO cameraDTO) {
+		this(cameraDTO.getModel(), cameraDTO.getMatrix(), cameraDTO.getResolution());
 	}
 
 	public long getId() {

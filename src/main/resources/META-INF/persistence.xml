@@ -18,6 +18,10 @@
 			<property name="hibernate.show_sql" value="true"/>
 			
 			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			
+			
+			<!-- <property name="hibernate.c3p0.timeout" value="5"/> -->
+			
 		</properties>
 	</persistence-unit>
 </persistence>

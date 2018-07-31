@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import info.dawidfilip.dto.SensorDTO;
+
 @Entity
 @Table(name = "Sensor")
 public class Sensor {
@@ -28,11 +30,29 @@ public class Sensor {
 	public Sensor(){
 	}
 	
+	public Sensor(long id, boolean accelerometer, boolean ambientTemperature, boolean magneticField,
+			boolean gyroscope) {
+		this.id = id;
+		this.accelerometer = accelerometer;
+		this.ambientTemperature = ambientTemperature;
+		this.magneticField = magneticField;
+		this.gyroscope = gyroscope;
+	}
+	
 	public Sensor(boolean accelerometer, boolean ambientTemperature, boolean magneticField, boolean gyroscope) {
 		this.accelerometer = accelerometer;
 		this.ambientTemperature = ambientTemperature;
 		this.magneticField = magneticField;
 		this.gyroscope = gyroscope;
+	}
+	
+	public Sensor(SensorDTO sensorDTO) {
+		this(
+			sensorDTO.isAccelerometer(),
+			sensorDTO.isAmbientTemperature(),
+			sensorDTO.isMagneticField(),
+			sensorDTO.isGyroscope()
+		);
 	}
 
 	public long getId() {

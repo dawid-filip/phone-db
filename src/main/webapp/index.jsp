@@ -9,14 +9,14 @@
 		<a href="http://localhost:8080/Phone-db/rest/phone/add">
 			<b>/add/</b>
 		</a><br />
-		<a href="http://localhost:8080/Phone-db/rest/phone/add/brand/Sony/model/Xperia Z1 Compact">
-			<b>/add/brand/{brand}/model/{model}</b>
+		<a href="http://localhost:8080/Phone-db/rest/phone/add-dummy">
+			<b>/add-dummy/</b>
 		</a><br />
 		<a href="http://localhost:8080/Phone-db/rest/phone/all">
 			<b>/all</b>
 		</a><br />
 		<a href="http://localhost:8080/Phone-db/rest/phone/one/id/1">
-			<b>/one/id/{id}</b>
+			<b>/find/id/{id}</b>
 		</a><br />
 		<a href="http://localhost:8080/Phone-db/rest/phone/delete/id/1">
 			<b>/delete/id/{id}</b>
@@ -24,9 +24,6 @@
 		<a href="http://localhost:8080/Phone-db/rest/phone/all/delete">
 			<b>/all/delete</b>
 		</a><br />
-		
-		<a href="http://localhost:8080/Phone-db/rest/phone/all/all">
-			<b>/all/all</b>
 		</a><br />
 		
 		

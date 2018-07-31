@@ -5,10 +5,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-import info.dawidfilip.dto.Matrix;
-import info.dawidfilip.dto.Resolution;
 import info.dawidfilip.phone.entity.Camera;
+import info.dawidfilip.phone.entity.Matrix;
 import info.dawidfilip.phone.entity.Phone;
+import info.dawidfilip.phone.entity.Resolution;
 import info.dawidfilip.phone.entity.Sensor;
 import info.dawidfilip.phone.entity.User;
 

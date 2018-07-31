@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 
+import info.dawidfilip.dto.PhoneDTO;
+
 @Entity
 @Table(name = "Phone")
 @NamedQueries({ 
@@ -61,7 +63,6 @@ public class Phone {
 
 	public Phone(long id, String brand, String model, String alias, short batery, short internalMemory, short ram,
 			Sensor sensor, Camera cameraFront, Camera cameraBack) {
-		super();
 		this.id = id;
 		this.brand = brand;
 		this.model = model;
@@ -76,7 +77,6 @@ public class Phone {
 
 	public Phone(String brand, String model, String alias, short batery, short internalMemory, short ram, Sensor sensor,
 			Camera cameraFront, Camera cameraBack) {
-		super();
 		this.brand = brand;
 		this.model = model;
 		this.alias = alias;
@@ -88,6 +88,32 @@ public class Phone {
 		this.cameraBack = cameraBack;
 	}
 
+	public Phone(Phone phone) {
+		this(
+			phone.getBrand(),
+			phone.getModel(),
+			phone.getAlias(),
+			phone.getBatery(),
+			phone.getInternalMemory(),
+			phone.getRam(),
+			phone.getSensor(),
+			phone.getCameraFront(),
+			phone.getCameraBack()
+		);
+	}
+	
+	public Phone(PhoneDTO phoneDTO) {
+		this.brand = phoneDTO.getBrand();
+		this.model = phoneDTO.getModel();
+		this.alias = phoneDTO.getAlias();
+		this.batery = phoneDTO.getBatery();
+		this.internalMemory = phoneDTO.getInternalMemory();
+		this.ram = phoneDTO.getRam();
+		this.sensor = new Sensor(true, true, false, true);
+		this.cameraFront = new Camera("FrontModel", Matrix._5PX, Resolution._1280x720);
+		this.cameraBack = new Camera("BackModel", Matrix._21PX, Resolution._2560x1440);
+	}
+	
 	public long getId() {
 		return id;
 	}

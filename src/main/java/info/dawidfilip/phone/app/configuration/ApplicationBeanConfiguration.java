@@ -27,7 +27,7 @@ public class ApplicationBeanConfiguration {
 		return new PhoneEntityManagerImpl().getEntityManager("unitPhoneDB");
 	}
 
-	@Bean(name = "phoneDAO")
+	@Bean(name = "phoneDAOImpl")
 	@Scope(scopeName = ConfigurableBeanFactory.SCOPE_SINGLETON)
 	public PhoneDAOImpl phoneDAO() {
 		PhoneDAOImpl phoneDAO = new PhoneDAOImpl();
@@ -36,7 +36,7 @@ public class ApplicationBeanConfiguration {
 		return phoneDAO;
 	}
 	
-	@Bean(name = "userDAO")
+	@Bean(name = "userDAOImpl")
 	@Scope(scopeName = ConfigurableBeanFactory.SCOPE_SINGLETON)
 	public UserDAOImpl userDAO() {
 		UserDAOImpl userDAO = new UserDAOImpl();
@@ -45,10 +45,11 @@ public class ApplicationBeanConfiguration {
 		return userDAO;
 	}
 	
-	@Bean(name = "phoneService")
+	@Bean(name = "phoneServiceImpl")
 	@Scope(scopeName = ConfigurableBeanFactory.SCOPE_SINGLETON)
-	public PhoneService phoneServiceImpl() {
+	public PhoneService PhoneServiceImpl() {
 		PhoneService phoneServiceImpl = new PhoneServiceImpl();
+		phoneServiceImpl.setPhoneDAOImpl(phoneDAO());
 		return phoneServiceImpl;
 	}
 	
