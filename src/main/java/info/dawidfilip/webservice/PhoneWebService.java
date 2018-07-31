@@ -5,6 +5,8 @@ import static info.dawidfilip.phone.common.CommonBuilder.CONTEXT;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import info.dawidfilip.dto.PhoneDTO;
+import info.dawidfilip.phone.app.configuration.ApplicationBeanConfiguration;
 import info.dawidfilip.phone.entity.Phone;
 import info.dawidfilip.service.PhoneService;
+import info.dawidfilip.service.PhoneServiceImpl;
 
 @RestController
 @RequestMapping("/phone/")
@@ -38,7 +42,8 @@ public class PhoneWebService {
 		Phone addedPhone = phoneServiceImpl.add(phoneDTO);
 		return phoneDTO;
 	}
-	@PostMapping(path = "add", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	
+	@PostMapping(path = "add-Phone", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Phone addPhone(@RequestBody Phone phone) {
 		LOGGER.info("addPhone");
 		Phone addedPhone = phoneServiceImpl.add(phone);
@@ -78,19 +83,20 @@ public class PhoneWebService {
 }
 
 /*
-
+JSON example: 
+(Content-Type: application/json     POST)
 	{
-		"brand":"Sony_6xxx8",
-		"model":"Model_1xxxx5",
+		"brand":"Sony_Brand",
+		"model":"Sony Model",
 		"alias":"Not available",
-		"batery":3111,
+		"batery":7777,
 		"internalMemory":16,
 		"ram":2,
 		"sensor":{
 			"accelerometer":true,
 			"ambientTemperature":true,
 			"magneticField":false,
-			"gyroscope":false
+			"gyroscope":true
 		},
 		"cameraFront":{
 			"model":"Sony IMX_1x2s",
@@ -106,7 +112,7 @@ public class PhoneWebService {
 
 
  * 
- * 
+(Content-Type: application/json     POST)
  	{
 		"phone":{
 			"id":5000,

@@ -9,6 +9,9 @@
 		<a href="http://localhost:8080/Phone-db/rest/phone/add">
 			<b>/add/</b>
 		</a><br />
+		<a href="http://localhost:8080/Phone-db/rest/phone/add-Phone">
+			<b>/add-Phone/</b>
+		</a><br />
 		<a href="http://localhost:8080/Phone-db/rest/phone/add-dummy">
 			<b>/add-dummy/</b>
 		</a><br />
@@ -23,7 +26,6 @@
 		</a><br />
 		<a href="http://localhost:8080/Phone-db/rest/phone/all/delete">
 			<b>/all/delete</b>
-		</a><br />
 		</a><br />
 		
 		
