@@ -13,7 +13,7 @@ public interface PhoneService {
 	Phone getOne(long id);
 	
 	Phone add(PhoneDTO phoneDTO);
-	//Phone add(Phone phone);
+	Phone add(Phone phone);
 	Phone addDummy();
 	
 	Phone delete(long id);

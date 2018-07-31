@@ -33,9 +33,15 @@ public class PhoneWebService {
 	}
 	
 	@PostMapping(path = "add", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Phone add(@RequestBody PhoneDTO phoneDTO) {
-		LOGGER.info("add");
+	public PhoneDTO addPhoneDTO(@RequestBody PhoneDTO phoneDTO) {
+		LOGGER.info("addPhoneDTO");
 		Phone addedPhone = phoneServiceImpl.add(phoneDTO);
+		return phoneDTO;
+	}
+	@PostMapping(path = "add", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Phone addPhone(@RequestBody Phone phone) {
+		LOGGER.info("addPhone");
+		Phone addedPhone = phoneServiceImpl.add(phone);
 		return addedPhone;
 	}
 	

@@ -43,5 +43,12 @@
 			<b>/user/one/{userName}</b>
 		</a><br />
 		
+		
+		<br /><br />
+		<h3>/rest/test</h3>
+		<a href="http://localhost:8080/Phone-db/rest/test/add">
+			<b>/test/add</b>
+		</a><br />
+		
 	</body>
 </html>

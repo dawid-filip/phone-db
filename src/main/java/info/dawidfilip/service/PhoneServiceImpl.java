@@ -42,28 +42,24 @@ public class PhoneServiceImpl implements PhoneService {
 		return phone;
 	}
 	
-//	public Phone add(PhoneDTO phoneDTO) {
-//		return null;
-//		LOGGER.info("add");
-//		Phone phone = new Phone(phoneDTO);
-//		phoneDAOImpl.add(phone);
-//		print(phone);
-//		return phone;
-//	}
+	public Phone add(Phone phone) {
+		LOGGER.info("add Phone");
+		phoneDAOImpl.add(phone);
+		print(phone);
+		return phone;
+	}
+	
 	public Phone add(PhoneDTO phoneDTO) {
-		System.out.println("add -> phone service \n" + phoneDTO.toString());
-		LOGGER.info("add -> phone service \n" + phoneDTO.toString());
-		
+		LOGGER.info("add PhoneDTO");
 		
 		Phone phoneToAdd = new Phone(phoneDTO);
-		print(phoneToAdd);
-		
 		//phoneToAdd.setCameraFront(new Camera(phoneDTO.getCameraFront()));
 		//phoneToAdd.setCameraBack(new Camera(phoneDTO.getCameraBack()));
 		
 		phoneDAOImpl.add(phoneToAdd);
 		
 		print(phoneToAdd);
+		
 		return phoneToAdd;
 	}
 	
