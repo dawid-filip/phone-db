@@ -5,8 +5,6 @@ import static info.dawidfilip.phone.common.CommonBuilder.CONTEXT;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,10 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import info.dawidfilip.dto.PhoneDTO;
-import info.dawidfilip.phone.app.configuration.ApplicationBeanConfiguration;
 import info.dawidfilip.phone.entity.Phone;
 import info.dawidfilip.service.PhoneService;
-import info.dawidfilip.service.PhoneServiceImpl;
 
 @RestController
 @RequestMapping("/phone/")
@@ -37,15 +33,8 @@ public class PhoneWebService {
 	}
 	
 	@PostMapping(path = "add", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public PhoneDTO addPhoneDTO(@RequestBody PhoneDTO phoneDTO) {
-		LOGGER.info("addPhoneDTO");
-		Phone addedPhone = phoneServiceImpl.add(phoneDTO);
-		return phoneDTO;
-	}
-	
-	@PostMapping(path = "add-Phone", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Phone addPhone(@RequestBody Phone phone) {
-		LOGGER.info("addPhone");
+		LOGGER.info("add");
 		Phone addedPhone = phoneServiceImpl.add(phone);
 		return addedPhone;
 	}
@@ -81,66 +70,3 @@ public class PhoneWebService {
 	
 	
 }
-
-/*
-JSON example: 
-(Content-Type: application/json     POST)
-	{
-		"brand":"Sony_Brand",
-		"model":"Sony Model",
-		"alias":"Not available",
-		"batery":7777,
-		"internalMemory":16,
-		"ram":2,
-		"sensor":{
-			"accelerometer":true,
-			"ambientTemperature":true,
-			"magneticField":false,
-			"gyroscope":true
-		},
-		"cameraFront":{
-			"model":"Sony IMX_1x2s",
-			"matrix":"_3PX",
-			"resolution":"_2560x1440"
-		},
-		"cameraBack":{
-			"model":"Sony IMX_31x22",
-			"matrix":"_21PX",
-			"resolution":"_1920x1080"
-		}
-	}
-
-
- * 
-(Content-Type: application/json     POST)
- 	{
-		"phone":{
-			"id":5000,
-			"brand":"Sony_6xxx8",
-			"model":"Model_1xxxx5",
-			"alias":"Not available",
-			"batery":3111,
-			"internalMemory":16,
-			"ram":2,
-			"sensor":{
-				"id":5000,
-				"accelerometer":true,
-				"ambientTemperature":true,
-				"magneticField":false,
-				"gyroscope":false
-			},
-			"cameraFront":{
-				"id":5000,
-				"model":"Sony IMX_1x2s",
-				"matrix":"_3PX",
-				"resolution":"_2560x1440"
-			},
-			"cameraBack":{
-				"id":5001,
-				"model":"Sony IMX_31x22",
-				"matrix":"_21PX",
-				"resolution":"_1920x1080"
-			}
-		}
-	}
-*/

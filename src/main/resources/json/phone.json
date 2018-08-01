@@ -1,0 +1,28 @@
+// POST
+// Content-Type: application/json
+// Accept: application/json
+	
+{
+	"brand":"Sony_Brand",
+	"model":"Sony_Model",
+	"alias":"Not available",
+	"batery":7777,
+	"internalMemory":16,
+	"ram":2,
+	"sensor":{
+		"accelerometer":true,
+		"ambientTemperature":true,
+		"magneticField":false,
+		"gyroscope":true
+	},
+	"cameraFront":{
+		"model":"Sony IMX_1x2s",
+		"matrix":"_3PX",
+		"resolution":"_2560x1440"
+	},
+	"cameraBack":{
+		"model":"Sony Model CameraBack",
+		"matrix":"_21PX",
+		"resolution":"_1920x1080"
+	}
+}

@@ -8,9 +8,7 @@ import java.util.logging.Logger;
 import org.springframework.stereotype.Service;
 
 import info.dawidfilip.dao.PhoneDAOImpl;
-import info.dawidfilip.dto.PhoneDTO;
 import info.dawidfilip.phone.common.PhoneBuilder;
-import info.dawidfilip.phone.entity.Camera;
 import info.dawidfilip.phone.entity.Phone;
 
 @Service
@@ -47,20 +45,6 @@ public class PhoneServiceImpl implements PhoneService {
 		phoneDAOImpl.add(phone);
 		print(phone);
 		return phone;
-	}
-	
-	public Phone add(PhoneDTO phoneDTO) {
-		LOGGER.info("add PhoneDTO");
-		
-		Phone phoneToAdd = new Phone(phoneDTO);
-		//phoneToAdd.setCameraFront(new Camera(phoneDTO.getCameraFront()));
-		//phoneToAdd.setCameraBack(new Camera(phoneDTO.getCameraBack()));
-		
-		phoneDAOImpl.add(phoneToAdd);
-		
-		print(phoneToAdd);
-		
-		return phoneToAdd;
 	}
 	
 	public Phone addDummy() {

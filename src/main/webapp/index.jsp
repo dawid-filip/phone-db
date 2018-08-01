@@ -9,9 +9,6 @@
 		<a href="http://localhost:8080/Phone-db/rest/phone/add">
 			<b>/add/</b>
 		</a><br />
-		<a href="http://localhost:8080/Phone-db/rest/phone/add-Phone">
-			<b>/add-Phone/</b>
-		</a><br />
 		<a href="http://localhost:8080/Phone-db/rest/phone/add-dummy">
 			<b>/add-dummy/</b>
 		</a><br />
@@ -28,25 +25,9 @@
 			<b>/all/delete</b>
 		</a><br />
 		
-		
+		<br /><br />
 		<br /><br />
 		
-		<h3>/rest/user</h3>
-		<a href="http://localhost:8080/Phone-db/rest/user/add">
-			<b>/user/add</b>
-		</a><br />
-		<a href="http://localhost:8080/Phone-db/rest/user/add/userName/dfilip/password/pwd/role/superUser">
-			<b>/user/add/userName/{userName}/password/{password}/role/{role}</b>
-		</a><br />
-		<a href="http://localhost:8080/Phone-db/rest/user/all">
-			<b>/user/all</b>
-		</a><br />
-		<a href="http://localhost:8080/Phone-db/rest/user/one/userName/dawid">
-			<b>/user/one/{userName}</b>
-		</a><br />
-		
-		
-		<br /><br />
 		<h3>/rest/test</h3>
 		<a href="http://localhost:8080/Phone-db/rest/test/add">
 			<b>/test/add</b>

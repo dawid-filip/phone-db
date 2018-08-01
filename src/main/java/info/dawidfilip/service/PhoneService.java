@@ -12,7 +12,6 @@ public interface PhoneService {
 	List<Phone> getAll();
 	Phone getOne(long id);
 	
-	Phone add(PhoneDTO phoneDTO);
 	Phone add(Phone phone);
 	Phone addDummy();
 	

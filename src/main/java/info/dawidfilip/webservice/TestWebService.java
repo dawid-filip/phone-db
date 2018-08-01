@@ -23,12 +23,3 @@ public class TestWebService {
 	}
 	
 }
-
-
-/*
-
-{
-	
-} 
-
-*/
