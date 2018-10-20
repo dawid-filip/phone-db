@@ -1,7 +1,6 @@
 package info.dawidfilip.webservice;
 
 public class Test {
-	
 	private String name;
 	private String company;
 	
